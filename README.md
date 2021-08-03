@@ -4,4 +4,4 @@ It is a software designed to perform basic functions of library management i.e.
 <br>2.Book Return/Deposit
 <br>3.Registration of a new book/student
 <br>4.Modify book/student details
-<br>6.Delete details
+<br>5.Delete details
