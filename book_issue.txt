@@ -1,0 +1,52 @@
+void book_issue()
+{
+  char sn[8],bn[10],issue_date[20];;
+  int found=0;
+  int flag=0;
+  cout<<"BOOK ISSUE"<<endl;
+  cout<<"Enter student admission no:  ";
+  cin>>sn;
+  fp.open("student",ios::in|ios::out);
+  fp1.open("book",ios::in|ios::out);
+  while(fp.read((char*)&st,sizeof(student))&&found==0)
+  {
+     if(strcmpi(st.retadmno(),sn)==0)
+     {
+	found=1;
+	if(st.rettoken()==0)
+	{
+	  cout<<"Enter the book no : ";
+	  cin>>bn;
+	  while(fp1.read((char*)&bk,sizeof(book))&&flag==0)
+	  {
+	    if(strcmpi(bk.retbno(),bn)==0)
+	    {
+
+	      flag=1;
+	      bk.show_book();
+	      st.addtoken();
+	      bk.reset_copies();
+	      cout<<"\nEnter issue date : ";
+	      cin>>issue_date;
+	      st.getstbno(bk.retbno());
+	      int pos=-1*sizeof(st);
+	      fp.seekp(pos,ios::cur);
+	      fp.write((char*)&st,sizeof(student));
+
+	      cout<<"\nBook issued successful on date \n"<<issue_date<<endl;
+	      bk.show_book();
+
+	    }
+	  }
+	if(flag==0)
+	 cout<<"\nBook doesn't exist";
+     }
+     else
+	cout<<"You have not returned the last book";
+  }
+}
+if(found==0)
+cout<<"student record don't exist";
+fp.close();
+fp1.close();
+}

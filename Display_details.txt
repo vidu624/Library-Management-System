@@ -1,0 +1,46 @@
+void display_spb(char n[])
+{
+	cout<<"Book details  ";
+	int flag=0;
+	fp.open("book",ios::in);
+	while(fp.read((char*)&bk,sizeof(book)))
+	{
+		if(strcmpi(bk.retbno(),n)==0)
+		{
+			bk.show_book();
+			flag=1;
+		}
+	}
+	fp.close();
+	if(flag==0)
+		cout<<"Book does not exist";
+}
+
+void display_sps(char n[])
+{
+	cout<<"Student details  ";
+	int flag=0;
+	fp.open("student",ios::in);
+	while(fp.read((char*)&st,sizeof(student)))
+	{
+		if(strcmpi(st.retadmno(),n)==0)
+		{
+			st.show_student();
+			flag=1;
+		}
+	}
+	fp.close();
+	if(flag==0)
+		cout<<"Student details does not exist";
+}
+
+void display_allb()
+{
+	fp.open("book",ios::in);
+cout<<"Book no"<<setw(30)<<"Book name"<<setw(30)<<"Author Name"<<endl;
+while(fp.read((char*)&bk,sizeof(book)))
+ {
+	bk.report();
+ }
+	fp.close();
+}

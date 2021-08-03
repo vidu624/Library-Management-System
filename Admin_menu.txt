@@ -1,0 +1,43 @@
+void admin_menu()
+{
+	int ch;
+	cout<<"\n\n\tADMINISTRATIVE MENU\n "<<endl;
+	do
+	{
+	cout<<"\n1.Create Student Record"<<endl;
+	cout<<"\n2.Display Specific Student Record"<<endl;
+	cout<<"\n3.Modify Student Record"<<endl;
+	cout<<"\n4.Delete student Record"<<endl;
+	cout<<"\n5.Create Book Record"<<endl;
+	cout<<"\n6.Display Specific Book Record"<<endl;
+	cout<<"\n7.Modify Book Record"<<endl;
+	cout<<"\n8.Delete Book Record"<<endl;
+	cout<<"\nEnter your choice :\n ";
+	cin>>ch;
+	switch(ch)
+	{
+		case 1 : write_student();
+			 break;
+		case 2 : char adn[8];
+			 cout<<"\n\tEnter Admission no of student";
+			 cin>>adn;
+			 display_sps(adn);
+			 break;
+	       case 3 : modify_student();
+			break;
+	       case 4 : delete_student();
+			break;
+	       case 5 : write_book();
+			 break;
+	       case 6 : char bkn[10];
+			 cout<<"\n\tEnter Book no of Book";
+			 cin>>bkn;
+			 display_spb(bkn);
+			 break;
+	       case 7 : modify_book();
+			break;
+	       case 8 : delete_book();
+			break;
+	       }
+	       }while(ch>=1&&ch<=8);
+}

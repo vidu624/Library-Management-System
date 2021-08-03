@@ -1,0 +1,31 @@
+int main()
+{
+	char ch;
+	clrscr();
+	intro();
+	do
+	{
+		cout<<"\n\n\tMAIN MENU";
+		cout<<"\n1.Book Isuue"<<endl;
+		cout<<"\n2.Book Deposit"<<endl;
+		cout<<"\n3.Administrator Menu"<<endl;
+		cout<<"\n4.exit"<<endl;
+		cout<<"\nPlease select your option\n";
+		ch=getche();
+		switch(ch)
+		{
+			case '1' : book_issue();
+				 break;
+			case '2' : book_deposit();
+				 break;
+			case '3' : admin_menu();
+				break;
+			case '4' : exit(0);
+			default : cout<<"\a";
+		}
+	}while(ch>='1'&&ch<='4');
+
+	getch();
+	return 0;
+
+}

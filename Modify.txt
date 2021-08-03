@@ -1,0 +1,56 @@
+void modify_book()
+{
+	char n[10];
+	int no_of_copies;
+	int found =0;
+	cout<<"\n Modify book record   ";
+	cout<<"\n Enter the book no of book : ";
+	cin>>n;
+	cout<<"\nEnter no of copies available";
+	cin>>no_of_copies;
+	fp.open("book",ios::in|ios::out);
+	while(fp.read((char*)&bk,sizeof(book))&& found == 0)
+	{
+		if(strcmpi(bk.retbno(),n)==0)
+		{
+			bk.show_book();
+			cout<<"Enter the new details of book"<<endl;
+			bk.modify_book();
+			int pos=-1*sizeof(bk);
+			fp.seekp(pos,ios::cur);
+			fp.write((char*)&bk,sizeof(book));
+			cout<<" Record updated";
+			found=1;
+		}
+	}
+	fp.close();
+	if(found==0)
+		cout<<"\n Record not found";
+}
+
+void modify_student()
+{
+	char n[10];
+	int found =0;
+	cout<<"\n Modify Student record   ";
+	cout<<"\n Enter the student admission no of student : ";
+	cin>>n;
+	fp.open("student",ios::in|ios::out);
+	while(fp.read((char*)&st,sizeof(student))&& found == 0)
+	{
+		if(strcmpi(st.retadmno(),n)==0)
+		{
+			st.show_student();
+			cout<<"Enter the new details of student"<<endl;
+			st.modify_student();
+			int pos=-1*sizeof(st);
+			fp.seekp(pos,ios::cur);
+			fp.write((char*)&st,sizeof(student));
+			cout<<" Record updated";
+			found=1;
+		}
+	}
+	fp.close();
+	if(found==0)
+		cout<<"\n Record not found";
+}

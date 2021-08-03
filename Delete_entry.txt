@@ -1,0 +1,64 @@
+void delete_book()
+{
+	char n[10];
+	 const char  N=100;
+	char line[N];
+	cout<<" Delete book"<<endl;
+	cout<<" Enter the book no : ";
+	cin>>n;
+	fp.open("book",ios::in|ios::out);
+	fstream fp2;
+	fp2.open("temp",ios::out);
+	fp.seekg(0,ios::beg);
+	while(fp.read((char*)&bk,sizeof(book)))
+	{
+		if(strcmpi(bk.retbno(),n)!=0)
+		{       fp2.write((char*)&bk,sizeof(book));
+
+		}
+		else
+			bk.show_book();
+	}
+	fp.close();
+	fp2.close();
+	remove("book");
+	 int value=rename("temp","book");
+	 if(!value)
+		cout<<"file name changed";
+	 else
+		cout<<"error";
+	cout<<" Record deleted";
+}
+
+
+void delete_student()
+{
+	char n[10];
+	 const char  N=100;
+	char line[N];
+	cout<<" Delete student"<<endl;
+	cout<<" Enter the admission no : ";
+	cin>>n;
+	fp.open("student",ios::in|ios::out);
+	fstream fp2;
+	fp2.open("temp",ios::out);
+	fp.seekg(0,ios::beg);
+	while(fp.read((char*)&st,sizeof(student)))
+	{
+		if(strcmpi(st.retadmno(),n)!=0)
+		{       fp2.write((char*)&st,sizeof(student));
+
+		}
+		else
+			st.show_student();
+	}
+	fp.close();
+	fp2.close();
+	remove("student");
+	 int value=rename("temp","student");
+	 if(!value)
+		cout<<"file name changed";
+	 else
+		cout<<"error";
+	cout<<" Record deleted";
+}
