@@ -1,0 +1,67 @@
+class student
+{
+	char admno[8];
+	char name[20];
+	char stbno[10];
+	int token;
+	char issue_date[20];
+	public:
+
+	void create_student()
+	{
+	cout<<"New student entry"<<endl;
+	cout<<"admission no :";
+	cin>>admno;
+	cout<<"Name of student:  ";
+	cin>>name;
+	token=0;
+	stbno[0]='/0';
+	issue_date[0]='/0';
+	cout<<"Student record Created"<<endl;
+	}
+	void show_student()
+	{
+
+		cout<<"\nAdmission no:   "<<admno;
+		cout<<"\n Student Name:  "<<name;
+		cout<<"\n NO of book issued  :  "<<token;
+		if((token!=0)&&(issue_date!=0))
+		{
+		cout<<"\nBook no, date of issuing :  "<<stbno <<issue_date ;
+		}
+
+	}
+	void modify_student()
+	{
+	 cout<<"\nEnter admission no and name of student: ";
+	 cin>>admno>>name;
+	}
+	char * retadmno()
+	{
+		return admno;
+	}
+	char * retstbno()
+	{
+		return stbno;
+	}
+	int rettoken()
+	{
+		return token;
+	}
+	void addtoken()
+	{
+		token=token+1;
+	}
+	void resettoken()
+	{
+		token=token-1;
+	}
+	void getstbno(char t[])
+	{
+		strcpy(stbno,t);
+	}
+	void report()
+	{
+	cout<<"\t"<<admno<<setw(20)<<name<<setw(10)<<token<<endl;
+	}
+};

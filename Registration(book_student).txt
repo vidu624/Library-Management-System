@@ -1,0 +1,43 @@
+void write_book()
+{
+	char ch;
+	fp.open("book",ios::out|ios::app);
+	do
+	{
+
+		bk.create_book();
+		fp.write((char*)&bk,sizeof(book));
+		cout<<"\nDo you want to add more record  (y/n?)";
+		cin>>ch;
+	}while(ch=='y'||ch=='Y');
+	fp.close();
+}
+
+void write_student()
+{
+	char ch,sn[8];
+	fp.open("student",ios::in|ios::out|ios::app);
+
+	do
+	{
+		fp.read((char*)&st,sizeof(student));
+		 cout<<"enter admission no of new student";
+		 cin>>sn;
+		 if(strcmpi(st.retadmno(),sn)==0)
+		 {
+			cout<<" This Admission no alredy existed..Try another no";
+
+		 }
+		 else
+		 {
+		 cout<<"You may proceed";
+		st.create_student();
+		fp.write((char*)&st,sizeof(student));
+		st.show_student();
+		cout<<"\nDo you want to add more record  (y/n?)";
+		cin>>ch;
+		}
+
+	}while(ch=='y'||ch=='Y');
+	fp.close();
+}

@@ -1,0 +1,49 @@
+class book
+{
+	char bno[10];
+	char bname[50];
+	char aname[30];
+	public:
+	int no_of_copies;
+	void create_book()
+	{
+		cout<<"New book entry"<<endl;
+		cout<<"enter the book no  ";
+		cin>>bno;
+		cout<<"Enter the book name  ";
+		cin>>bname;
+		cout<<"Author name  ";
+		cin>>aname;
+		cout<<"No of Copies Available";
+		cin>>no_of_copies;
+		cout<<"\nbook created  ";
+	}
+	void show_book()
+	{
+		cout<<"book no:"<< bno<<endl;
+		cout<<"book name:"<< bname<<endl;
+		cout<<"Author name:"<<aname<<endl;
+		cout<<"Copies Available:"<<no_of_copies<<endl;
+		if(no_of_copies==0)
+			cout<<"All copies of book is already issued";
+
+	}
+	void modify_book()
+	{
+		cout<<"bno,bname,aname of book that should modify"<<endl;
+		cin>>bno>> bname>> aname;
+	}
+	char*retbno()
+	{
+		return bno;
+	}
+	void reset_copies()
+	{
+		no_of_copies=no_of_copies-1;;
+	}
+
+void report()
+{
+cout<<bno<<setw(30)<<bname<<setw(30)<<aname<<setw(20)<<no_of_copies<<endl;
+}
+};
